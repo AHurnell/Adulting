@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+  <head>
+      <meta
+charset="utf-8"><meta
+name="viewport" content="width=device-width, initial-scale=1"><title>Adulting</title><style type="text/css">body{margin:40px
+auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0
+10px}h1,h2,h3{line-height:1.2}</style>
+          
+    <title>Adulting</title>
+    <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font: 13px Helvetica, Arial; }
+  .button {
+  background-color: #dddddd; /* Green */
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 10px;
+  height: 24px;
+  width: 30%;
+}
+    </style>
+  </head>
+  <body>
+  <h1><p id="title"> Large title text</p><br></h1>
+  <img src="image.jpg" width="650px">
+      <h2><div id="main text">This is our main text, it will include a problem and some descriptions.</div></h2>
+  <h2><div id="main text2"><br> Also it may include information</div><br></h2>
+      <center>
+      <button onclick="button1Clicked()" id="button1" class="button">Choice 1</button>
+      <button onclick="button2Clicked()" id="button2" class="button">Choice 2</button>
+      <button onclick="button3Clicked()" id="button3" class="button">Choice 3</button>
+      </center>
+      <br>
+      <!-- this bit is for testing -->
+      <br>
+      Level = <div id="LevelDisplay">0</div><br>
+      Correct Answer = <div id="CorrectDisplay">0</div><br>
+      Money = <div id="MoneyDisplay">0</div><br>
+      Mental Health = <div id="MentalDisplay">0</div><br>
+      Physical Health = <div id="PhysicalDisplay">0</div><br>
+      Player name = <div id="NameDisplay"></div><br>
+      
+      
+    
+      
+      
+    <script>
+    var buttonClicks=0, level=1, money=400, mentalHealth=100, physicalHealth=100, playerName="", playerID=0, rent=0, income=0, correctAnswer=0, numberOfOptions=3, question=1;
+    var level1Q, level2Q, level3Q, level4Q, level5Q, level6Q;
+    
+    reloadPage(true);
+        
+    function button1Clicked(){
+        if(correctAnswer==1){
+            level++;
+            reloadPage(true);
+
+        }
+        else{
+            reloadPage(false);
+            incorrectChoice(1);
+        }
+        reloadPage();
+    }
+        
+    function button2Clicked(){
+        if(correctAnswer==2){
+            level++;
+            reloadPage(true);
+        }
+        else{
+            reloadPage(false);
+            incorrectChoice(2);
+
+        }
+        reloadPage();
+    }
+
+        
+    function button3Clicked(){
+        if(correctAnswer==3){
+            level++;
+            reloadPage(true);
+        }
+        else{
+            reloadPage(false);
+            incorrectChoice(3);
+
+        }
+    }
+    
+    function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+        
+    function reloadPage(newAnswer){
+        if(newAnswer){
+        correctAnswer = getRandomInt(1,numberOfOptions);
+        }
+        buttonClicks++;
+        document.getElementById("CorrectDisplay").innerHTML=correctAnswer;
+        document.getElementById("LevelDisplay").innerHTML=level;
+        document.getElementById("MoneyDisplay").innerHTML=money;
+        document.getElementById("MentalDisplay").innerHTML=mentalHealth;
+        document.getElementById("PhysicalDisplay").innerHTML=physicalHealth;
+
+        loadLevel();
+    }
+    
+    function loadLevel(){
+                //physicalHealth;
+
+        switch (level){
+
+            case 1:
+                document.getElementById("main text2").innerHTML="you are on level 1, this is a training level";
+                break;
+            case 2:
+                document.getElementById("main text2").innerHTML="you are on level 2, this is an easier question";
+                break;
+            case 3:
+                document.getElementById("main text2").innerHTML="you are on level 3, this is an ok question";
+                break;
+            case 4:
+                document.getElementById("main text2").innerHTML="you are on level 4, this is a moderate question";
+                break;
+            case 5:
+                document.getElementById("main text2").innerHTML="you are on level 5, this is a hard question";
+                break;
+            default:
+               // document.getElementById("main text").innerHTML="you are on level , this is a hard question";
+                break;
+                
+        }
+                
+    }
+        
+    function incorrectChoice(){
+        physicalHealth--;
+        mentalHealth++;
+        money=money-33;
+    }
+        
+    </script>
+   
+  </body>
+</html>
