@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+	<title>Adulting: myPad</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<script>
+
+if (performance.navigation.type == 1) {
+resetCounter()
+  }
+
+function resetCounter() {
+    localStorage.clickcount = 0;
+    localStorage.pHealthPoints = 10;
+	localStorage.mHealthPoints = 10;
+	localStorage.fHealthPoints = 10;
+}
+
+function questionOne(){
+	document.getElementById("questionChoice").innerHTML =
+	//enter question
+	"This is Q1" + 
+					//
+					//space between q and a
+					'<br><br>' +
+					'<button class="button" onclick='+
+	//set 1st conditions and following Q
+	'"localStorage.pHealthPoints=Number(localStorage.pHealthPoints)+1;questionTwo()" '+
+					//
+					'type="button">'+
+	//set 1st button text
+	'Do A' +
+					//more code
+					'</button>' + 
+					' <button class="button" onclick='+
+	//set 2nd conditions and following Q
+	'"localStorage.fHealthPoints=Number(localStorage.fHealthPoints)+1;questionTwo()"' +
+					//
+					'type="button">'+
+	//set 2nd button text
+	'Do B'+
+					//end code
+					'</button>';
+	document.getElementById("result").innerHTML = "PH: " + localStorage.pHealthPoints  + " MH: " + localStorage.mHealthPoints  +" FH: " + localStorage.fHealthPoints  ;
+	}
+
+function questionTwo(){
+	document.getElementById("questionChoice").innerHTML = "This is Q2" + '<br><br><button class="button" onclick="questionThree()" type="button">Do C</button>  <button class="button" onclick="questionThree()" type="button">Do D</button>';
+	document.getElementById("result").innerHTML = "PH: " + localStorage.pHealthPoints  + " MH: " + localStorage.mHealthPoints  +" FH: " + localStorage.fHealthPoints  ;
+}
+
+function questionThree(){
+	document.getElementById("questionChoice").innerHTML = "This is Q3" + '<br><br><button class="button" onclick="questionThree()" type="button">Do E</button>  <button class="button" onclick="questionThree()" type="button">Do F</button>';
+	document.getElementById("result").innerHTML = "PH: " + localStorage.pHealthPoints  + " MH: " + localStorage.mHealthPoints  +" FH: " + localStorage.fHealthPoints  ;
+
+}
+
+
+</script>
+</head>
+<body onload="questionOne()">
+<div id="result"></div>
+<br>
+<div id="questionChoice"></div>
+
+<p><button class="buttonEnd" class="button" onclick="resetCounter();questionOne()" type="button">Start Again</button></p>
+
+</body>
+</html>
