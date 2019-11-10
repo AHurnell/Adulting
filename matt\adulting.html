@@ -9,6 +9,19 @@
 if (performance.navigation.type == 1) {
 resetCounter()
   }
+	
+function changeHealthM(num){
+localStorage.mHealthPoints = localStorage.mHealthPoints + num;
+}
+	
+function changeHealthP(num){
+localStorage.pHealthPoints = localStorage.pHealthPoints + num;
+}
+	
+function changeHealthF(num){
+localStorage.fHealthPoints = localStorage.fHealthPoints + num;
+}
+	
 
 function resetCounter() {
     localStorage.clickcount = 0;
